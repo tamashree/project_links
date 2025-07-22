@@ -1,259 +1,1626 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tamashree Project Links</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-  <style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamashree Dey - Web Developer | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .feature-icon {
-      width: 4rem;
-     height: 4rem;
-      border-radius: .75rem;
-    }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            scroll-behavior: smooth;
+        }
 
-  </style>
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 1rem 0;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f2937;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4b5563;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #3b82f6;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Mobile Menu Styles */
+        .mobile-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 1px solid #e5e7eb;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            padding: 1rem 0;
+        }
+
+        .mobile-nav ul li {
+            padding: 0;
+        }
+
+        .mobile-nav ul li a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: #4b5563;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav ul li a:hover,
+        .mobile-nav ul li a.active {
+            color: #3b82f6;
+            background: #f3f4f6;
+        }
+
+        /* Mobile menu animation */
+        .mobile-menu.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .mobile-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .profile-img {
+            width: 100%;
+            max-width: 500px;
+            aspect-ratio: 1;
+            border-radius: 20px;
+            object-fit: cover;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .profile-placeholder {
+            width: 100%;
+            max-width: 500px;
+            aspect-ratio: 1;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #60a5fa 0%, #4f46e5 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .decorative-circle-1 {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 100px;
+            height: 100px;
+            background: #bfdbfe;
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: pulse 2s infinite;
+        }
+
+        .decorative-circle-2 {
+            position: absolute;
+            bottom: -30px;
+            left: -30px;
+            width: 120px;
+            height: 120px;
+            background: #c7d2fe;
+            border-radius: 50%;
+            opacity: 0.4;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero-text h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #4b5563;
+            margin-bottom: 2rem;
+        }
+
+        .hero-text p {
+            font-size: 1.125rem;
+            color: #6b7280;
+            margin-bottom: 3rem;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn-primary {
+            background: #3b82f6;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px -5px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-secondary {
+            border: 2px solid #3b82f6;
+            color: #3b82f6;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background: #3b82f6;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px -5px rgba(59, 130, 246, 0.4);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: #6b7280;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #3b82f6;
+            transform: scale(1.1);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+
+        .section-divider {
+            width: 80px;
+            height: 4px;
+            background: #3b82f6;
+            margin: 0 auto;
+        }
+
+        .bg-gray {
+            background: #f9fafb;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #60a5fa 0%, #4f46e5 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            margin: 0 auto;
+        }
+
+        .about-text p {
+            font-size: 1.125rem;
+            color: #4b5563;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .about-info {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #6b7280;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .skill-percentage {
+            color: #3b82f6;
+            font-weight: 600;
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 12px;
+            background: #e5e7eb;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6 0%, #4f46e5 100%);
+            border-radius: 6px;
+            transition: width 2s ease-out;
+        }
+
+        /* Experience Section */
+        .experience-item {
+            background: #f9fafb;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .experience-item:hover {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .experience-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-company {
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: #3b82f6;
+            margin-bottom: 1rem;
+        }
+
+        .experience-date {
+            color: #6b7280;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .experience-achievements {
+            list-style: none;
+        }
+
+        .experience-achievements li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-achievements li::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #3b82f6;
+            border-radius: 50%;
+            margin-right: 1rem;
+            margin-top: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        /* Education Section */
+        .education-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .education-item:hover {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .education-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .education-degree {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-institution {
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: #3b82f6;
+            margin-bottom: 1rem;
+        }
+
+        .education-date {
+            color: #6b7280;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-item {
+            background: #f9fafb;
+            padding: 2rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-item:hover {
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1f2937;
+            transition: color 0.3s ease;
+        }
+
+        .project-item:hover .project-title {
+            color: #3b82f6;
+        }
+
+        .project-link {
+            color: #9ca3af;
+            font-size: 1.25rem;
+            transition: color 0.3s ease;
+        }
+
+        .project-item:hover .project-link {
+            color: #3b82f6;
+        }
+
+        .project-description {
+            color: #4b5563;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #6b7280;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-technologies {
+            color: #3b82f6;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-view {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .project-view:hover {
+            color: #2563eb;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .contact-intro p {
+            color: #6b7280;
+            font-size: 1.125rem;
+            line-height: 1.7;
+        }
+
+        .contact-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            padding: 3rem;
+        }
+
+        .contact-title {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 3rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 1rem;
+            border-radius: 10px;
+        }
+
+        .contact-link:hover {
+            transform: scale(1.05);
+        }
+
+        .contact-icon-wrapper {
+            width: 64px;
+            height: 64px;
+            background: #dbeafe;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.75rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-link:hover .contact-icon-wrapper {
+            background: #bfdbfe;
+        }
+
+        .contact-icon {
+            font-size: 1.75rem;
+            color: #3b82f6;
+        }
+
+        .contact-label {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-value {
+            color: #6b7280;
+            font-size: 0.875rem;
+            text-align: center;
+        }
+
+        .call-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            background: #3b82f6;
+            color: white;
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.125rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.3);
+            margin: 0 auto;
+        }
+
+        .call-button:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px -5px rgba(59, 130, 246, 0.4);
+        }
+
+        /* Footer */
+        .footer {
+            background: #1f2937;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer p {
+            color: #9ca3af;
+        }
+
+        /* Scroll to Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #3b82f6;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .scroll-top:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+        }
+
+        .scroll-top.visible {
+            display: flex;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-content {
+                position: relative;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-text h2 {
+                font-size: 1.25rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .contact-links {
+                gap: 1.5rem;
+            }
+
+            .experience-header,
+            .education-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .profile-img,
+            .profile-placeholder {
+                font-size: 3rem;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .contact-card {
+                padding: 2rem;
+            }
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
-
-<body> 
- 
-  <div class="px-4 pt-5 my-5 text-center border-bottom">
-    <div class="container px-5">
-        <img src="./images/me.png" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Example image" width="200" height="200" loading="lazy">
-      </div>
-    <h1 class="display-4 fw-bold text-body-emphasis">Tamashree Dey</h1>
-    <div class="col-lg-6 mx-auto">
-        <h2>Project links</h2>
-      <p>call: +91 94751 56799 </p>
-      <p>Mail: tamashree.dey@gmail.com </p>
-      <p>Location: Kolkata, India</p>
-
-    </div>
-    <div class="overflow-hidden" style="max-height: 30vh;">
- 
-    </div>
-  </div>
-
-
-  <div class="col-lg-8 mx-auto p-4 py-md-5"> 
-
-                <h2 class="text-body-emphasis">Videotex</h2> 
-                <p class="fs-5 col-md-12">This is an ERP system of Videotex company to maintain the customer service with great efficiency. Some of its great features are - Easy to use and handle the customer requirement, Franchise wise report generation, Full work flow implementation.</p> 
-                <p class="fs-5 col-md-12">
-                  <strong>Technology:</strong> PHP, Codeigniter <br/>
-                  <strong>Databse:</strong> MySQL<br/>
-                  <strong>Tool :</strong> VS Code
-                </p>
-                <div class="mb-5"> 
-                    <a href="http://www.videotexservice.com/" class="btn btn-primary btn-lg px-4" target="_blank">click here</a> 
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">Tamashree Dey</div>
+                <ul class="nav-links">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#skills" class="nav-link">Skills</a></li>
+                    <li><a href="#experience" class="nav-link">Experience</a></li>
+                    <li><a href="#education" class="nav-link">Education</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
-    
-                <h2 class="text-body-emphasis">Autoclick Car Wash Web Portal</h2> 
-                <p class="fs-5 col-md-12">This is the admin and web portal to login for Super admin and car wash business owners. It is a Carwash Center and car wash owners management app. There is also an app for it.</p> 
-                <p class="fs-5 col-md-12">
-                  <strong>Technology:</strong> PHP, Laravel <br/>
-                  <strong>Databse:</strong> MySQL<br/>
-                  <strong>Tool :</strong> VS Code
-                </p>
-                <div class="mb-5"> 
-                    <a href="https://autoclickpartnersapp.com/" class="btn btn-primary btn-lg px-4" target="_blank">click here</a> 
-                </div>
-
-                <h2 class="text-body-emphasis">Dealer Website</h2> 
-                <p class="fs-5 col-md-12">Ecommerce Website for selling jewellery, customer registration, login, add to card products and order products.</p>
-                <p class="fs-5 col-md-12">
-                  <strong>Technology:</strong> Codeigniter <br/>
-                  <strong>Databse:</strong> MySQL<br/>
-                  <strong>Tool :</strong> VS Code
-                </p>
-                <div class="mb-5"> 
-                    <a href="https://kritanjali.net/" class="btn btn-primary btn-lg px-4" target="_blank">click here</a> 
-                </div>
-
                 
-                <h2 class="text-body-emphasis">Dealer Website CMS Admin</h2> 
-                <p class="fs-5 col-md-12">Setup for CMS data like logo, CMS pages, company settings, CMS pages, customization of the product coming from webservice, upload product etc.</p> 
-                <p class="fs-5 col-md-12">
-                  <strong>Technology:</strong> Codeigniter <br/>
-                  <strong>Databse:</strong> MySQL<br/>
-                  <strong>Tool :</strong> VS Code
-                </p>
-                <div class="mb-5"> 
-                    <a href="https://kritanjali.net/admin" class="btn btn-primary btn-lg px-4" target="_blank">click here</a> 
+                <!-- Mobile Navigation Menu -->
+                <div class="mobile-nav">
+                    <ul>
+                        <li><a href="#home" class="mobile-nav-link active">Home</a></li>
+                        <li><a href="#about" class="mobile-nav-link">About</a></li>
+                        <li><a href="#skills" class="mobile-nav-link">Skills</a></li>
+                        <li><a href="#experience" class="mobile-nav-link">Experience</a></li>
+                        <li><a href="#education" class="mobile-nav-link">Education</a></li>
+                        <li><a href="#projects" class="mobile-nav-link">Projects</a></li>
+                        <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+                    </ul>
                 </div>
+            </div>
+        </div>
+    </nav>
 
-                <h2 class="text-body-emphasis">Intell Comm Website</h2> 
-                <p class="fs-5 col-md-12">This is the frontend website. It is a medical software for maintaining the activities of different types of users like medical managers, doctors, nurses, patients, any other party like hospitals, clinics etc.</p> 
-                <p class="fs-5 col-md-12">
-                  <strong>Technology:</strong> PHP, Laravel <br/>
-                  <strong>Databse:</strong> MySQL<br/>
-                  <strong>Tool :</strong> Phpstorm
-                </p>            
-                <div class="mb-5"> 
-                    <a href="https://intell-comm.com/" class="btn btn-primary btn-lg px-4" target="_blank">click here</a> 
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <!-- Large Profile Image - Left Side -->
+                <div class="hero-image">
+                    <img src="./images/tamashree.jpg" 
+                         alt="Tamashree Dey - Web Developer" 
+                         class="profile-img"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="profile-placeholder" style="display: none;">👤</div>
+                    <div class="decorative-circle-1"></div>
+                    <div class="decorative-circle-2"></div>
                 </div>
-
-                <h2 class="text-body-emphasis">Intell Comm Super Admin</h2> 
-                <p class="fs-5 col-md-12">Super admin can only have the access of managing user roles, subscription packages, system ticket management if there is any issue submitted through ticket, reset other manager’s credential links etc.</p> 
-                <p class="fs-5 col-md-12">
-                  <strong>Technology:</strong> PHP, Laravel <br/>
-                  <strong>Databse:</strong> MySQL<br/>
-                  <strong>Tool :</strong> Phpstorm
-                </p>             
-                <div class="mb-5"> 
-                    <a href="https://intell-comm.com/admin" class="btn btn-primary btn-lg px-4" target="_blank">click here</a> 
-                </div>
-
-                <h2 class="text-body-emphasis">Intell Comm Different User Type Login & activities</h2> 
-                <p class="fs-5 col-md-12">All the above four types of users can login & perform their own functionalities. Managers can have employees under them. Managers & employees can create client & other parties categories & can add other party users under any category. Manager & employee can add disease, medication, allery, vaccination entries for a particular patient under them. There is a SOAP (Subjective, Objective, Assessment, Plan) note section in each user’s dashboard where notes about a particular patient’s health condition (disease, reason for visiting clinic, hospital/clinic name, disease type - minor/major etc.) is registered. There is a file section for each user type. Anyone can upload multiple documents about a patient & can send them to other users. A document can be edited, deleted, forwarded in group or individual, stamped & printed.</p> 
-                <p class="fs-5 col-md-12">
-                  <strong>Technology:</strong> PHP, Laravel <br/>
-                  <strong>Databse:</strong> MySQL<br/>
-                  <strong>Tool :</strong> Phpstorm
-                </p>             
-                <h5>Manager</h5>
-                <div class="mb-5"> 
-                    <a href="http://intell-comm.com/manager-login" class="btn btn-primary btn-lg px-4" target="_blank">click here</a> 
-                </div>
-                <h5>Employee (doctor/nurse etc.)</h5>
-                <div class="mb-5"> 
-                    <a href="http://intell-comm.com/employee-login" class="btn btn-primary btn-lg px-4" target="_blank">click here</a> 
-                </div>
-                <h5>Client (patient)</h5>
-                <div class="mb-5"> 
-                    <a href="http://intell-comm.com/client-login" class="btn btn-primary btn-lg px-4" target="_blank">click here</a> 
-                </div>
-                <h5>Other Party (hospital/clinic etc)</h5>
-                <div class="mb-5"> 
-                    <a href="http://intell-comm.com/other-party-login" class="btn btn-primary btn-lg px-4" target="_blank">click here</a> 
-                </div>
-
-                <h2 class="text-body-emphasis">English Language Training Centre</h2> 
-                <p class="fs-5 col-md-12">Website for English language training.</p> 
-                <p class="fs-5 col-md-12">
-                  <strong>Technology:</strong> Wordpress <br/>
-                  <strong>Databse:</strong> MySQL<br/>
-                  <strong>Tool :</strong> Sublime
-                </p>
-                <div class="mb-5"> 
-                    <a href="http://www.eltaglobal.in/" class="btn btn-primary btn-lg px-4" target="_blank">click here</a> 
-                </div>
-
-                <h2 class="text-body-emphasis">Ask US Pharmacist</h2> 
-                <p class="fs-5 col-md-12">To get advice for all medical needs.</p> 
-                <p class="fs-5 col-md-12">
-                  <strong>Technology:</strong> PHP, Laravel <br/>
-                  <strong>Databse:</strong> MySQL<br/>
-                  <strong>Tool :</strong> VS Code
-                </p>
-                <div class="mb-5"> 
-                    <a href="https://www.askuspharmacist.com/" class="btn btn-primary btn-lg px-4" target="_blank">click here</a> 
-                </div>
-
-                <h2 class="text-body-emphasis">Ask US Pharmacist Admin</h2> 
-                <p class="fs-5 col-md-12">Admin website to input data with multiple user roles, permissions, ticket system, reply to tickets, medicine details entry etc.</p> 
-                <p class="fs-5 col-md-12">
-                  <strong>Technology:</strong> Laravel <br/>
-                  <strong>Databse:</strong> MySQL<br/>
-                  <strong>Tool :</strong> VS Code
-                </p>
-                <div class="mb-5"> 
-                    <a href="https://www.askuspharmacist.com/admin/" class="btn btn-primary btn-lg px-4" target="_blank">click here</a> 
-                </div>
-
-                <h2 class="text-body-emphasis">SavvyParent - Digital Parenting Assistant, Admin</h2> 
-                <p class="fs-5 col-md-12">To manage all the details of a school, parents, students, multiple school user roles etc.</p> 
-                <p class="fs-5 col-md-12">
-                  <strong>Technology:</strong> PHP, Laravel <br/>
-                  <strong>Databse:</strong> MySQL<br/>
-                  <strong>Tool :</strong> VS Code
-                </p>
-                <div class="mb-5"> 
-                    <a href="https://savvyparent.co.in/" class="btn btn-primary btn-lg px-4" target="_blank">click here</a> 
-                </div>
-
-
-                <h2 class="text-body-emphasis">Indian Jewellery Website</h2> 
-                <p class="fs-5 col-md-12">Ecommerce Website for selling jewellery.</p> 
-                <p class="fs-5 col-md-12">
-                  <strong>Technology:</strong> PHP, Laravel <br/>
-                  <strong>Databse:</strong> MySQL<br/>
-                  <strong>Tool :</strong> VS Code
-                </p>
-                <div class="mb-5"> 
-                    <a href="https://indian-jewellery.com/" class="btn btn-primary btn-lg px-4" target="_blank">click here</a> 
-                </div>
-
-                <h2 class="text-body-emphasis">Indian Jewellery Website CMS Admin</h2> 
-                <p class="fs-5 col-md-12">Setup for CMS data like logo, CMS pages, company settings, CMS pages etc.</p> 
-                <p class="fs-5 col-md-12">
-                  <strong>Technology:</strong> PHP, Laravel <br/>
-                  <strong>Databse:</strong> MySQL<br/>
-                  <strong>Tool :</strong> VS Code
-                </p>
-                <div class="mb-5"> 
-                    <a href="https://indian-jewellery.com/admin" class="btn btn-primary btn-lg px-4" target="_blank">click here</a> 
-                </div>
-
-                <h2 class="text-body-emphasis">API For Autoclick Carwash Business App</h2> 
-                <p class="fs-5 col-md-12">Car Wash Owners registration, login, payment done here. After login, car wash entry and all it’s management like wash status, payment status update and  revenue, history etc displayed here.</p> 
-                <p class="fs-5 col-md-12">
-                  <strong>Technology:</strong> Laravel <br/>
-                  <strong>Databse:</strong> MySQL<br/>
-                  <strong>Tool :</strong> VS Code
-                </p>
-                <div class="mb-5"> 
-                    <a href="https://play.google.com/store/apps/details?id=com.autoclickcarwash.bo&pli=1" class="btn btn-primary btn-lg px-4" target="_blank">click here</a> 
-                </div>
-
-                <h2 class="text-body-emphasis">API For Autoclick Carwash Clients</h2> 
-                <p class="fs-5 col-md-12">The app allows clients to search for car washes nearby and view their location, contact information, operating hours, and available services.</p> 
-                <p class="fs-5 col-md-12">
-                  <strong>Technology:</strong> Laravel <br/>
-                  <strong>Databse:</strong> MySQL<br/>
-                  <strong>Tool :</strong> VS Code
-                </p>
-                <div class="mb-5"> 
-                    <a href="https://play.google.com/store/apps/details?id=com.autoclickcarwash.usr&pcampaignid=web_share" class="btn btn-primary btn-lg px-4" target="_blank">click here</a> 
-                </div>
-
-                <h2 class="text-body-emphasis">API For SavvyParent - Digital Parenting Assistant, Parent and Child App</h2> 
-                <p class="fs-5 col-md-12">To track locations of students, limit screen time of students, track call time, camera usage, app usage of students and to view all reports in parent app.</p> 
-                <p class="fs-5 col-md-12">
-                  <strong>Technology:</strong> Laravel <br/>
-                  <strong>Databse:</strong> MySQL<br/>
-                  <strong>Tool :</strong> VS Code
-                </p>
-                <div class="mb-5"> 
-                    <a href="https://play.google.com/store/search?q=savvyparent&c=apps" class="btn btn-primary btn-lg px-4" target="_blank">click here</a> 
-                </div>
-
-                <h2 class="text-body-emphasis">API For Videotex customer service application</h2> 
-                <p class="fs-5 col-md-12">Customer login, service request, register product, service history, service feedback.</p> 
-                <p class="fs-5 col-md-12">
-                  <strong>Technology:</strong> Codeigniter <br/>
-                  <strong>Databse:</strong> MySQL<br/>
-                  <strong>Tool :</strong> VS Code
-                </p>
-
                 
+                <!-- Text Content - Right Side -->
+                <div class="hero-text">
+                    <h1>Tamashree Dey</h1>
+                    <h2>Web Developer | PHP</h2>
+                    <p>
+                        I am a software engineer with B.Tech in Information Technology degree from
+                        West Bengal University Of Technology and 9 years of software development
+                        experience. I have sound knowledge in programming languages like PHP,
+                        Wordpress, Laravel, Codeigniter, Javascript, Jquery, Ajax.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn-primary">Get In Touch</a>
+                        <a href="#projects" class="btn-secondary">View My Work</a>
+                    </div>
+                    
+                    <!-- Social Links -->
+                    <div class="social-links">
+                        <a href="mailto:tamashree.dey@gmail.com">✉️</a>
+                        <a href="https://www.linkedin.com/in/tamashree-dey-60b26b54" target="_blank">💼</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-
-
-
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-image"><img src="./images/female-worker.png" alt="Tamashree"></div>
                 
+                <div class="about-text">
+                    <p>
+                        Hello! I'm Tamashree, a dedicated Web Developer based in Kolkata, India. With over a decade of experience in the
+                        tech industry, I specialize in PHP development. I'm passionate about crafting robust and efficient web solutions
+                        that meet diverse needs, bringing extensive expertise to every project I undertake.
+                    </p>
+                    
+                    <p>
+                        Throughout my career, I've honed my skills across a range of technologies, including PHP, Laravel, CodeIgniter,
+                        MySQL, and JavaScript. I approach my work with a blend of diligence and strategic thinking, believing firmly in both
+                        hard work and the power of smart solutions to achieve optimal results.
+                    </p>
+                    
+                    <p>
+                        Beyond the world of code, I enjoy exploring new places through travel, cherishing time spent with my child, and
+                        unwinding with captivating web series. I'm always eager to take on new challenges and leverage my experience to
+                        create impactful web experiences.
+                    </p>
+                    
+                    <div class="about-info">
+                        <div class="location">
+                            <span>📍</span>
+                            <span>Kolkata, India</span>
+                        </div>
+                        <div class="social-links">
+                            <a href="mailto:tamashree.dey@gmail.com">✉️</a>
+                            <a href="https://www.linkedin.com/in/tamashree-dey-60b26b54" target="_blank">💼</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Skills Section -->
+    <section id="skills" class="section bg-gray">
+        <div class="container">
+            <div class="section-title">
+                <h2>Skills & Expertise</h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">PHP</span>
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">Codeigniter</span>
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">Laravel</span>
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">wordpress</span>
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">MYSQL</span>
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">Javascript</span>
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">jQuery</span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
 
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Work Experience</h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">Senior Programmer</div>
+                        <div class="experience-company">Karmick Solutions Pvt. Ltd.</div>
+                        <div><a href="https://www.karmicksolutions.com" target="_blank">View Website</a></div>
+                    </div>
+                    <div class="experience-date">
+                        <span>📅</span>
+                        <span>2020 - 2025</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">Web Developer</div>
+                        <div class="experience-company">Infymax Solutions Pvt. Ltd.</div>
+                        <div><a href="http://www.infymax.com/" target="_blank">View Website</a></div>
+                    </div>
+                    <div class="experience-date">
+                        <span>📅</span>
+                        <span>2019 - 2020</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">Software developer</div>
+                        <div class="experience-company">WRC Technologies Pvt. Ltd.</div>
+                        <div><a href="https://www.wrctpl.com/" target="_blank">View Website</a></div>
+                    </div>
+                    <div class="experience-date">
+                        <span>📅</span>
+                        <span>2018 - 2019</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">Web Developer</div>
+                        <div class="experience-company">Infymax Solutions Pvt. Ltd.</div>
+                        <div><a href="http://infymax.com/" target="_blank">View Website</a></div>
+                    </div>
+                    <div class="experience-date">
+                        <span>📅</span>
+                        <span>2015 - 2017</span>
+                    </div>
+                </div>
+            </div>
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">Junior Web Developer</div>
+                        <div class="experience-company">Techpenta e-Solutions Pvt. Ltd.</div>
+                        <div><a href="https://www.techpenta.com/" target="_blank">View Website</a></div>
+                    </div>
+                    <div class="experience-date">
+                        <span>📅</span>
+                        <span>2013 - 2014</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Education Section -->
+    <section id="education" class="section bg-gray">
+        <div class="container">
+            <div class="section-title">
+                <h2>Education</h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="education-item">
+                <div class="education-header">
+                    <div>
+                        <div class="education-degree">B.Tech (Information Technology)</div>
+                        <div class="education-institution">W.B.U.T (Saroj Mohan Institute Of Technology, Techno India group)</div>
+                    </div>
+                    <div class="education-date">
+                        <span>🎓</span>
+                        <span>2011</span>
+                    </div>
+                </div>
+                <p>8.42 CGPA</p>
+            </div>
+            
+            <div class="education-item">
+                <div class="education-header">
+                    <div>
+                        <div class="education-degree">Higher Secondary (Class XII)</div>
+                        <div class="education-institution">W.B.C.H.S.E</div>
+                    </div>
+                    <div class="education-date">
+                        <span>🎓</span>
+                        <span>2007</span>
+                    </div>
+                </div>
+                <p>80.80%</p>
+            </div>
+            
+            <div class="education-item">
+                <div class="education-header">
+                    <div>
+                        <div class="education-degree">Madhyamik (Secondary, Class X)</div>
+                        <div class="education-institution">W.B.B.S.E</div>
+                    </div>
+                    <div class="education-date">
+                        <span>🎓</span>
+                        <span>2005</span>
+                    </div>
+                </div>
+                <p>84.38%</p>
+            </div>
+        </div>
+    </section>
 
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Projects</h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="projects-grid">
+                <div class="project-item">
+                    <div class="project-header">
+                        <h3 class="project-title">Videotex</h3>
+                        <span class="project-link">🔗</span>
+                    </div>
+                    <p class="project-description">
+                        This ERP system helps Videotex efficiently manage customer service with user-friendly features, reporting, and workflow.
+                    </p>
+                    <div class="project-tech">Technologies: <strong>PHP, Codeigniter</strong></div>
+                    <div class="project-tech">Databse: <strong>MySQL</strong></div>
+                    <div class="project-tech">Tool: <strong>VS Code</strong></div>
+                    <a href="http://www.videotexservice.com/" class="project-view" target="_blank">
+                        View Project 🔗
+                    </a>
+                </div>
+                
+                                <div class="project-item">
+                    <div class="project-header">
+                        <h3 class="project-title">Autoclick Car Wash Web Portal</h3>
+                        <span class="project-link">🔗</span>
+                    </div>
+                    <p class="project-description">
+                        This admin and web portal, with a companion app, manages carwash centers and owners.
+                    </p>
+                    <div class="project-tech">Technologies: <strong>PHP, Laravel</strong></div>
+                    <div class="project-tech">Databse: <strong>MySQL</strong></div>
+                    <div class="project-tech">Tool: <strong>VS Code</strong></div>
+                    <a href="https://autoclickpartnersapp.com/" class="project-view" target="_blank">
+                        View Project 🔗
+                    </a>
+                </div>
+                
+                <div class="project-item">
+                    <div class="project-header">
+                        <h3 class="project-title">Dealer Website</h3>
+                        <span class="project-link">🔗</span>
+                    </div>
+                    <p class="project-description">
+                        Ecommerce Website for selling jewellery, customer registration, login, add to card products and order products.
+                    </p>
+                    <div class="project-tech">Technologies: <strong>Codeigniter</strong></div>
+                    <div class="project-tech">Databse: <strong>MySQL</strong></div>
+                    <div class="project-tech">Tool: <strong>VS Code</strong></div>
+                    <a href="https://kritanjali.net/" class="project-view" target="_blank">
+                        View Project 🔗
+                    </a>
+                </div>
+                
+               <div class="project-item">
+                    <div class="project-header">
+                        <h3 class="project-title">Dealer Website CMS Admin</h3>
+                        <span class="project-link">🔗</span>
+                    </div>
+                    <p class="project-description">
+                        This setup manages CMS data: logos, pages, company settings, product customization, and uploads from webservices.
+                    </p>
+                    <div class="project-tech">Technologies: <strong>Codeigniter</strong></div>
+                    <div class="project-tech">Databse: <strong>MySQL</strong></div>
+                    <div class="project-tech">Tool: <strong>VS Code</strong></div>
+                    <a href="https://kritanjali.net/admin" class="project-view" target="_blank">
+                        View Project 🔗
+                    </a>
+                </div>
 
+                <div class="project-item">
+                    <div class="project-header">
+                        <h3 class="project-title">Intell Comm Website</h3>
+                        <span class="project-link">🔗</span>
+                    </div>
+                    <p class="project-description">
+                        This medical software's frontend website manages activities for managers, doctors, nurses, patients, hospitals, and clinics.
+                    </p>
+                    <div class="project-tech">Technologies: <strong>PHP, Laravel</strong></div>
+                    <div class="project-tech">Databse: <strong>MySQL</strong></div>
+                    <div class="project-tech">Tool: <strong>Phpstorm</strong></div>
+                    <a href="https://intell-comm.com/" class="project-view" target="_blank">
+                        View Project 🔗
+                    </a>
+                </div>
 
+                <div class="project-item">
+                    <div class="project-header">
+                        <h3 class="project-title">Intell Comm Super Admin</h3>
+                        <span class="project-link">🔗</span>
+                    </div>
+                    <p class="project-description">
+                        Super admin manages user roles, subscriptions, system tickets, and can reset other managers' credentials.
+                    </p>
+                    <div class="project-tech">Technologies: <strong>PHP, Laravel</strong></div>
+                    <div class="project-tech">Databse: <strong>MySQL</strong></div>
+                    <div class="project-tech">Tool: <strong>Phpstorm</strong></div>
+                    <a href="https://intell-comm.com/" class="project-view" target="_blank">
+                        View Project 🔗
+                    </a>
+                </div>
 
+                <div class="project-item">
+                    <div class="project-header">
+                        <h3 class="project-title">Intell Comm Super Admin</h3>
+                        <span class="project-link">🔗</span>
+                    </div>
+                    <p class="project-description">
+                        Super admin manages user roles, subscriptions, system tickets, and can reset other managers' credentials.
+                    </p>
+                    <div class="project-tech">Technologies: <strong>PHP, Laravel</strong></div>
+                    <div class="project-tech">Databse: <strong>MySQL</strong></div>
+                    <div class="project-tech">Tool: <strong>Phpstorm</strong></div>
+                    <a href="https://intell-comm.com/admin" class="project-view" target="_blank">
+                        View Project 🔗
+                    </a>
+                </div>
+                <div class="project-item">
+                    <div class="project-header">
+                        <h3 class="project-title">Intell Comm Different User Type Login & activities</h3>
+                        <span class="project-link">🔗</span>
+                    </div>
+                    <p class="project-description">
+                        Users (managers, employees) manage clients, parties, and patient health records (SOAP notes, files) with full document control.
+                    </p>
+                    <div class="project-tech">Technologies: <strong>PHP, Laravel</strong></div>
+                    <div class="project-tech">Databse: <strong>MySQL</strong></div>
+                    <div class="project-tech">Tool: <strong>Phpstorm</strong></div>
+                    <div><a href="http://intell-comm.com/manager-login" class="project-view" target="_blank">
+                        Manager 🔗
+                    </a>
+                    <a href="https://intell-comm.com/employee-login" class="project-view" target="_blank">
+                        Employee (doctor/nurse etc.) 🔗
+                    </a>
+                    <a href="https://intell-comm.com/client-login" class="project-view" target="_blank">
+                        Client (patient) 🔗
+                    </a>
+                    <a href="https://intell-comm.com/other-party-login" class="project-view" target="_blank">
+                        Other Party (hospital/clinic etc) 🔗
+                    </a>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <div class="project-header">
+                        <h3 class="project-title">English Language Training Centre</h3>
+                        <span class="project-link">🔗</span>
+                    </div>
+                    <p class="project-description">
+                        Website for English language training.
+                    </p>
+                    <div class="project-tech">Technologies: <strong>Wordpress</strong></div>
+                    <div class="project-tech">Databse: <strong>MySQL</strong></div>
+                    <div class="project-tech">Tool: <strong>Sublime</strong></div>
+                    <a href="http://www.eltaglobal.in/" class="project-view" target="_blank">
+                        View Project 🔗
+                    </a>
+                </div>
+                <div class="project-item">
+                    <div class="project-header">
+                        <h3 class="project-title">Ask US Pharmacist</h3>
+                        <span class="project-link">🔗</span>
+                    </div>
+                    <p class="project-description">
+                        To get advice for all medical needs.
+                    </p>
+                    <div class="project-tech">Technologies: <strong>PHP, Laravel</strong></div>
+                    <div class="project-tech">Databse: <strong>MySQL</strong></div>
+                    <div class="project-tech">Tool: <strong>VS Code</strong></div>
+                    <a href="https://www.askuspharmacist.com/" class="project-view" target="_blank">
+                        View Project 🔗
+                    </a>
+                </div>
+                <div class="project-item">
+                    <div class="project-header">
+                        <h3 class="project-title">Ask US Pharmacist Admin</h3>
+                        <span class="project-link">🔗</span>
+                    </div>
+                    <p class="project-description">
+                        Admin website to input data with multiple user roles, permissions, ticket system, reply to tickets, medicine details entry etc.
+                    </p>
+                    <div class="project-tech">Technologies: <strong>Laravel</strong></div>
+                    <div class="project-tech">Databse: <strong>MySQL</strong></div>
+                    <div class="project-tech">Tool: <strong>VS Code</strong></div>
+                    <a href="https://www.askuspharmacist.com/admin/login" class="project-view" target="_blank">
+                        View Project 🔗
+                    </a>
+                </div>
+                <div class="project-item">
+                    <div class="project-header">
+                        <h3 class="project-title">SavvyParent - Digital Parenting Assistant, Admin</h3>
+                        <span class="project-link">🔗</span>
+                    </div>
+                    <p class="project-description">
+                        To manage all the details of a school, parents, students, multiple school user roles etc.
+                    </p>
+                    <div class="project-tech">Technologies: <strong>PHP, Laravel</strong></div>
+                    <div class="project-tech">Databse: <strong>MySQL</strong></div>
+                    <div class="project-tech">Tool: <strong>VS Code</strong></div>
+                    <a href="https://savvyparent.co.in/" class="project-view" target="_blank">
+                        View Project 🔗
+                    </a>
+                </div>
+                <div class="project-item">
+                    <div class="project-header">
+                        <h3 class="project-title">Indian Jewellery Website</h3>
+                        <span class="project-link">🔗</span>
+                    </div>
+                    <p class="project-description">
+                        Ecommerce Website for selling jewellery.
+                    </p>
+                    <div class="project-tech">Technologies: <strong>PHP, Laravel</strong></div>
+                    <div class="project-tech">Databse: <strong>MySQL</strong></div>
+                    <div class="project-tech">Tool: <strong>VS Code</strong></div>
+                    <a href="https://indian-jewellery.com/" class="project-view" target="_blank">
+                        View Project 🔗
+                    </a>
+                </div>
+                <div class="project-item">
+                    <div class="project-header">
+                        <h3 class="project-title">Indian Jewellery Website CMS Admin</h3>
+                        <span class="project-link">🔗</span>
+                    </div>
+                    <p class="project-description">
+                        Setup for CMS data like logo, CMS pages, company settings, CMS pages etc.
+                    </p>
+                    <div class="project-tech">Technologies: <strong>PHP, Laravel</strong></div>
+                    <div class="project-tech">Databse: <strong>MySQL</strong></div>
+                    <div class="project-tech">Tool: <strong>VS Code</strong></div>
+                    <a href="https://indian-jewellery.com/admin" class="project-view" target="_blank">
+                        View Project 🔗
+                    </a>
+                </div>
+                <div class="project-item">
+                    <div class="project-header">
+                        <h3 class="project-title">API For Autoclick Carwash Business App</h3>
+                        <span class="project-link">🔗</span>
+                    </div>
+                    <p class="project-description">
+                        Car Wash Owners: Register, login, pay. Manage car wash entries, status, payments, and view revenue/history.
+                    </p>
+                    <div class="project-tech">Technologies: <strong>Laravel</strong></div>
+                    <div class="project-tech">Databse: <strong>MySQL</strong></div>
+                    <div class="project-tech">Tool: <strong>VS Code</strong></div>
+                    <a href="https://play.google.com/store/apps/details?id=com.autoclickcarwash.bo&pli=1" class="project-view" target="_blank">
+                        View Project 🔗
+                    </a>
+                </div>
+                <div class="project-item">
+                    <div class="project-header">
+                        <h3 class="project-title">API For Autoclick Carwash Clients</h3>
+                        <span class="project-link">🔗</span>
+                    </div>
+                    <p class="project-description">
+                        The app allows clients to search for car washes nearby and view their location, contact information, operating hours, and available services.
+                    </p>
+                    <div class="project-tech">Technologies: <strong>Laravel</strong></div>
+                    <div class="project-tech">Databse: <strong>MySQL</strong></div>
+                    <div class="project-tech">Tool: <strong>VS Code</strong></div>
+                    <a href="https://play.google.com/store/apps/details?id=com.autoclickcarwash.usr&pcampaignid=web_share" class="project-view" target="_blank">
+                        View Project 🔗
+                    </a>
+                </div>
+                <div class="project-item">
+                    <div class="project-header">
+                        <h3 class="project-title">API For SavvyParent - Digital Parenting Assistant, Parent and Child App</h3>
+                        <span class="project-link">🔗</span>
+                    </div>
+                    <p class="project-description">
+                        Parents can track student location, screen time, calls, camera, app usage, and view reports.
+                    </p>
+                    <div class="project-tech">Technologies: <strong>Laravel</strong></div>
+                    <div class="project-tech">Databse: <strong>MySQL</strong></div>
+                    <div class="project-tech">Tool: <strong>VS Code</strong></div>
+                </div>
+                <div class="project-item">
+                    <div class="project-header">
+                        <h3 class="project-title">API For Videotex customer service application</h3>
+                        <span class="project-link">🔗</span>
+                    </div>
+                    <p class="project-description">
+                        Customer login, service request, register product, service history, service feedback.
+                    </p>
+                    <div class="project-tech">Technologies: <strong>Codeigniter</strong></div>
+                    <div class="project-tech">Databse: <strong>MySQL</strong></div>
+                    <div class="project-tech">Tool: <strong>VS Code</strong></div>
+                </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section bg-gray">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-intro">
+                    <p>
+                        I'm always open to discussing new opportunities, interesting projects, 
+                        or just having a chat about technology and development.
+                    </p>
+                </div>
+                
+                <div class="contact-card">
+                    <h3 class="contact-title">Let's Connect</h3>
+                    
+                    <!-- Contact Links - Horizontal Layout -->
+                    <div class="contact-links">
+                        <a href="mailto:tamashree.dey@gmail.com" class="contact-link">
+                            <div class="contact-icon-wrapper">
+                                <span class="contact-icon">✉️</span>
+                            </div>
+                            <p class="contact-label">Email</p>
+                            <p class="contact-value">tamashree.dey@gmail.com</p>
+                        </a>
+
+                        <a href="https://www.linkedin.com/in/tamashree-dey-60b26b54" class="contact-link">
+                            <div class="contact-icon-wrapper">
+                                <span class="contact-icon">💼</span>
+                            </div>
+                            <p class="contact-label">LinkedIn</p>
+                            <p class="contact-value">www.linkedin.com/in/<br>tamashree-dey-60b26b54</p>
+                        </a>
+                    </div>
+
+                    <!-- Call Me Button -->
+                    <button class="call-button" onclick="window.location.href='tel:+919475156799'">
+                        <span>📞</span>
+                        Call Me
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 Tamashree Dey. All rights reserved. </p>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" onclick="scrollToTop()">
+        ⬆️
+    </button>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const mobileNav = document.querySelector('.mobile-nav');
+        
+        mobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                mobileNav.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Active navigation link highlighting
+        window.addEventListener('scroll', () => {
+            const sections = ['home', 'about', 'skills', 'experience', 'education', 'projects', 'contact'];
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const element = document.getElementById(section);
+                if (element) {
+                    const rect = element.getBoundingClientRect();
+                    if (rect.top <= 100 && rect.bottom >= 100) {
+                        current = section;
+                    }
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Update mobile nav links
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+            mobileNavLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Show/hide scroll to top button
+            const scrollTop = document.querySelector('.scroll-top');
+            if (window.scrollY > 300) {
+                scrollTop.classList.add('visible');
+            } else {
+                scrollTop.classList.remove('visible');
+            }
+        });
+
+        // Scroll to top function
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Animate skill bars on scroll
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const skillBars = entry.target.querySelectorAll('.skill-progress');
+                    skillBars.forEach(bar => {
+                        const width = bar.style.width;
+                        bar.style.width = '0%';
+                        setTimeout(() => {
+                            bar.style.width = width;
+                        }, 200);
+                    });
+                }
+            });
+        }, observerOptions);
+
+        const skillsSection = document.getElementById('skills');
+        if (skillsSection) {
+            observer.observe(skillsSection);
+        }
+
+        // Fade in animation for sections
+        const fadeElements = document.querySelectorAll('.section');
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        fadeElements.forEach(el => {
+            el.classList.add('fade-in');
+            fadeObserver.observe(el);
+        });
+    </script>
 </body>
-
 </html>
